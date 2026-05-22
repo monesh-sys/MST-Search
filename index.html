@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Monesh Search</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+<div class="site-logo">
+
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<span>Monesh Search</span>
+
+</div>
+
+<div>
+
+<a href="/add">
+
+<button class="add-btn">
+➕ Add Website
+</button>
+
+</a>
+
+<button onclick="toggleDarkMode()">
+🌙 Dark
+</button>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h1>Monesh Search</h1>
+
+<form method="POST">
+
+<div class="search-box">
+
+<input type="text"
+name="search"
+placeholder="Search anything...">
+
+<button type="submit">
+🔍
+</button>
+
+</div>
+
+</form>
+
+<div class="results">
+
+{% for site in results %}
+
+<div class="card">
+
+<a href="{{ site.link }}"
+target="_blank">
+
+{{ site.title }}
+
+</a>
+
+<p class="link">
+{{ site.link }}
+</p>
+
+<p>
+{{ site.description }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
+</body>
+
+</html>
